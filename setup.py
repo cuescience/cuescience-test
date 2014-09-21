@@ -16,5 +16,5 @@ setup(
     maintainer_email='kontakt@cuescience.de',
     license="MIT",
     url='',
-    packages=['test', ],
+    packages=['testing', ],
 )
