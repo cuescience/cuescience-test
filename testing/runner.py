@@ -28,7 +28,7 @@ class CuescienceTestRunner(DiscoverRunner):
                 pk_field.default = GlobalUniqueAutoField.get_id
             else:
                 # TODO use the logger here
-                print "The model {0} uses a {1} pk field!".format(model, type(pk_field))
+                print ("The model {0} uses a {1} pk field!".format(model, type(pk_field)))
 
     def teardown_test_environment(self):
         GlobalUniqueAutoField.counter = 0
