@@ -18,7 +18,14 @@ class CuescienceTestRunner(DiscoverRunner):
         from django.db import models
 
         ms = models.get_models(include_auto_created=True)
+        self.unmanaged_models = []
         for model in ms:
+            # Change unmanaged models, to managed ones for testing
+            if not model._meta.managed:
+                self.unmanaged_models.append(model)
+                model._meta.managed = True
+                model._meta.db_table = "{}_{}".format(model._meta.app_label, model._meta.model_name)
+                
             pk_field = model._meta.pk
             if isinstance(pk_field, AutoField):
                 pk_field.default = GlobalUniqueAutoField.get_id
@@ -28,4 +35,6 @@ class CuescienceTestRunner(DiscoverRunner):
 
     def teardown_test_environment(self):
         GlobalUniqueAutoField.counter = 0
+        for m in self.unmanaged_models:
+            m._meta.managed = False
         super(CuescienceTestRunner, self).teardown_test_environment()
