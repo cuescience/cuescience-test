@@ -10,7 +10,7 @@ def read(fname):
 
 setup(
     name='cuescience-test',
-    version='0.1.2',
+    version='0.2.0',
     description='Custom test runner for all projects',
     maintainer='cuescience',
     maintainer_email='kontakt@cuescience.de',
