@@ -16,8 +16,9 @@ class CuescienceTestRunner(DiscoverRunner):
     def setup_test_environment(self, **kwargs):
         super(CuescienceTestRunner, self).setup_test_environment(**kwargs)
         from django.db import models
+        from django.apps import apps
 
-        ms = models.get_models(include_auto_created=True)
+        ms = apps.get_models(include_auto_created=True)
         self.unmanaged_models = []
         for model in ms:
             # Change unmanaged models, to managed ones for testing
