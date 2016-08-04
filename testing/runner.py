@@ -1,5 +1,6 @@
 from django.db.models import AutoField
 from django.test.runner import DiscoverRunner
+from teamcity.unittestpy import TeamcityTestRunner
 
 
 class GlobalUniqueAutoField(object):
@@ -13,6 +14,8 @@ class GlobalUniqueAutoField(object):
 
 
 class CuescienceTestRunner(DiscoverRunner):
+    test_runner = TeamcityTestRunner()
+    
     def setup_test_environment(self, **kwargs):
         super(CuescienceTestRunner, self).setup_test_environment(**kwargs)
         from django.db import models
