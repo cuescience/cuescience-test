@@ -14,7 +14,7 @@ class GlobalUniqueAutoField(object):
 
 
 class CuescienceTestRunner(DiscoverRunner):
-    test_runner = TeamcityTestRunner()
+    test_runner = TeamcityTestRunner
     
     def setup_test_environment(self, **kwargs):
         super(CuescienceTestRunner, self).setup_test_environment(**kwargs)
